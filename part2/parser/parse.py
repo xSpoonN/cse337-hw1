@@ -1,8 +1,8 @@
 # import utils.commands here
 
 # parse the command line arguments and execute the appropriate commands.
-from part2.db.manager import get_all_tasks
-from part2.utils.commands import add_task_cmd, change_priority_cmd, complete_task_cmd, remove_task_cmd, search_cmd, showhelp, sort_cmd, update_cmd
+from part2.db.manager import gettasks
+from part2.utils.commands import add_task_cmd, change_priority_cmd, complete_task_cmd, gettasks, remove_task_cmd, search_cmd, showhelp, sort_cmd, update_cmd
 
 
 def parseArgs(args):
@@ -11,7 +11,7 @@ def parseArgs(args):
     if (args[i] == "-h" or args[i] == "--help"):
         return showhelp()
     if (args[i] == "-l" or args[i] == "--list"):
-        return "".join(get_all_tasks())
+        return "".join(gettasks())
     if (args[i] == "-a" or args[i] == "--add"):
         if (len(args) > 5): return "Error: Found extraneous options"
         try:
@@ -71,7 +71,7 @@ def parseArgs(args):
                 if (priority == None): priority = int(args[i+1])
                 i += 1
             else:
-                if (id == None and priority == None and desc == None): return "".join(get_all_tasks())
+                if (id == None and priority == None and desc == None): return "".join(gettasks())
                 else: return search_cmd(id, desc, priority)
             i += 1
         if (id == None and priority == None and desc == None): return "Search Criteria Missing"

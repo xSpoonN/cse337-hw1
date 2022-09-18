@@ -72,3 +72,6 @@ def search_cmd(id, desc, priority):
 def sort_cmd(order):
     if (order == "-d"): return sort(2)
     else: return sort(1)
+
+def gettasks():
+    return get_all_tasks()
